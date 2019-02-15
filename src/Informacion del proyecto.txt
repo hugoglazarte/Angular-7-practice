@@ -64,3 +64,15 @@ ngIf: Directiva estructural con condicional
 ngFor: Directiva for para recorrer
 
 ngSwitch: Directiva condicional
+
+TWO WAY DATA BINDING:
+------------------
+Permite modificar datos o atributos del componente y que se vean reflejados
+inmediatamente.
+
+Trabaja de forma bidireccional, se modifica y se muestra al mismo tiempo
+
+directiva [(ngModel)] para modificar mediante formularios, para ESO ES IMPORTANTE
+CARGAR EL MODULO DE FORMULARIOS DE ANGULAR EN EL APP.MODULE
+
+import { FormsModule } from '@angular/forms';

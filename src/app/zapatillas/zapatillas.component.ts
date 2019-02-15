@@ -11,10 +11,13 @@ export class ZapatillasComponent{
   public titulo: string = "Componente de zapatillas";                           // podemos definir propiedades que se pueden transferir a la vista
   public listado: string;
   public zapatillas: Array<Zapatilla>;                                          // creamos un array de objetos tipo Zapatilla
-
+  public colos: String;
   public marcas: String[];
+  // prop a modificar desde el Two Way Databingin ngModel
+  public mi_marca: String;
 
   constructor(){
+    this.mi_marca = 'Texto';
     this.color = 'orange';
     this.marcas = new Array();                                                  // inicializamos el array
     // this.titulo = "Componente de zapatillas";
@@ -45,5 +48,20 @@ export class ZapatillasComponent{
     });
 
     console.log(this.marcas);
+  }
+
+  getMarca(){
+    alert(this.mi_marca);
+  }
+
+  addMarca(){
+    this.marcas.push(this.mi_marca);
+  }
+
+  borrarMarca(index){
+    //delete this.marcas[index];
+
+    //metodo mas efectivo splice(indice, cantidad de elementos a borrar)
+    this.marcas.splice(index, 1);
   }
 }
