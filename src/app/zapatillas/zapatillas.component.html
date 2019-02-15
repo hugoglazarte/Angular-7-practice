@@ -1,0 +1,46 @@
+<!-- traigo el contenido de la propiedad titulo que instanciamos en el constructor del componente, se llama
+  binding por interpolacion-->
+<h2>{{titulo}}</h2>
+
+<p>Compra las zapatillas de las mejores marcas</p>
+  <ul>
+    <li *ngFor="let marca of marcas; let indice = index">{{indice + ' - ' + marca}}</li>
+  </ul>
+
+<p>Las zapatillas que tenemos en stock son:</p>
+
+  <ul>
+
+    <li *ngFor="let deportiva of zapatillas">                                   <!-- RECORRIENDO ARRAY CON ngFor -->
+      <!-- MOSTRANDO LAS QUE TIENEN STOCK -->
+      <!-- <div *ngIf="deportiva.stock">      </div> -->
+                                                                                <!-- Otro metodo: si stock en false aplicamos el estilo line-through al text-decoration, sino 'none' -->
+      <span [ngStyle]="{
+        'text-decoration': !deportiva.stock ? 'line-through' : 'none'
+      }">
+        {{ deportiva.nombre }} - <strong>{{ deportiva.precio }}</strong>
+      </span>
+                                                                                <!-- NGIF: precio mayor a 60 muestra la oferta -->
+                                                                                <!-- Directiva de atributo: Terniario para ver si es menor a 80 aplico green sino transparent -->
+        <span *ngIf="deportiva.precio > 60"
+        [style.background]="deportiva.precio < 80 ? 'green' : 'transparent' ">!EN OFERTA¡</span>
+
+    </li>
+
+  </ul>
+
+  <p>El color de la mayoria de nuestras zapatillas es:</p>
+  <ul [ngSwitch]="color">
+    <li *ngSwitchCase="'yellow'">
+      El color predominante es el <span [ngStyle]="{'background': color}">Amarillo.</span>
+    </li>
+    <li *ngSwitchCase="'red'">
+      El color predominante es el <span [ngStyle]="{'background': color}">Rojo.</span>
+    </li>
+    <li *ngSwitchCase="'blue'">
+      El color predominante es el <span [ngStyle]="{'background': color}">Azul.</span>
+    </li>
+    <li *ngSwitchCase="'orange'">
+      El color predominante es el <span [ngStyle]="{'background': color}">Naranja.</span>
+    </li>
+  </ul>

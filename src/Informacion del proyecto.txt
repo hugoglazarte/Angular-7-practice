@@ -1,0 +1,66 @@
+Angular CLI
+-------------
+
+GENERANDO COMPONENTES AUTOMATICAMENTE:
+--
+
+Genera componente y lo importa automaticamentes, usamos la consola.
+
+Scafolding (generar codigo automaticamente)
+
+En la terminal:
+
+"ng generate component cursos"
+
+este codigo genera el componente con sus template y automaticamente hace el import
+a NgModule principal.
+
+
+{{ elemento }}
+Traigo el contenido de la propiedad titulo que instanciamos en el constructor del componente, se llama
+binding por interpolacion
+
+HOOKS
+--
+Son codigos que se ejecutan cuando el componente esta en cierto estado.
+
+OnInit: se ejecuta cuando se lanza el componente
+
+DoCheck: se ejecuta cuando se produce algun cambio en el componente o la app
+
+OnDestroy: se ejec antes de eliminar la instancia de un componente
+
+
+
+
+ngStyle = Aplica estilos a los elementos [ngStyle] = {'background': config.color }
+
+ngFor = Lo usamos para recorrer Arrays
+  Ejemplo:
+      <li *ngFor="let deportiva of zapatillas">
+        {{ deportiva.nombre }} - <strong>{{ deportiva.precio }}</strong>
+      </li>
+
+
+MODELS
+--
+
+Son modelos que contienen los datos para una entidad concreta
+Se usa como molde para crear un nuevoi
+
+
+DIRECTIVAS
+--
+
+Funcionalidad que vamos a tener en nuestras vistas o plantillas
+ej: etiquetas de un componente, estructuras de control
+
+
+ngIf: Directiva estructural con condicional
+
+  ejemplo:
+    *ngIf="mostrar_videojuegos" = estructura de control condicional
+
+ngFor: Directiva for para recorrer
+
+ngSwitch: Directiva condicional
