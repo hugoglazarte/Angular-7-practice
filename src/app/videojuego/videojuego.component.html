@@ -1,12 +1,9 @@
 <!-- traigo el contenido de la propiedad titulo que instanciamos en el constructor del componente, se llama
   binding por interpolacion-->
 <h2>{{titulo}}</h2>
+<h3>{{mi_titulo}}</h3>
 
 <button (click)="cambiarTitulo()"> Cambiar titulo </button>
 
-  <ul>
-    <li>GTA</li>
-   <li>Mortal Kombat</li>
-  </ul>
-
-<app-cursos></app-cursos>
+<p>Ingresa tu subtitulo</p>
+<input type="text" [(ngModel)]="mi_titulo"/>

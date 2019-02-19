@@ -6,7 +6,8 @@
 <!-- TWO WAY DATA BINGING -->
 
 <p>Añadir marca</p>
-<input type="text" [(ngModel)]="mi_marca" />
+<input type="text" [(ngModel)]="mi_marca" (keyup.enter)="mostrarPalabra()"/>
+<!-- (blur)="onBlur()" cuando salimos del input dispara -->
 <button (click)="getMarca()">Mostrar Marca</button>
 <button (click)="addMarca()">Cargar Marca</button>
 <p>{{ mi_marca }}</p>
@@ -31,7 +32,17 @@
       <span [ngStyle]="{
         'text-decoration': !deportiva.stock ? 'line-through' : 'none'
       }">
-        {{ deportiva.nombre }} - <strong>{{ deportiva.precio }}</strong>
+        {{ deportiva.nombre }} -
+        <!-- a continuacion, si es >=80 agregamos clase altoPrecio  -->
+        <strong
+          [class.altoPrecio]="deportiva.precio >= 80"
+          [ngClass]="{
+              'fondoRojo' : deportiva.precio > 100,
+              'subrayado' : deportiva.marca == 'Nike'
+              }"
+        >
+          {{ deportiva.precio }}
+        </strong>
       </span>
                                                                                 <!-- NGIF: precio mayor a 60 muestra la oferta -->
                                                                                 <!-- Directiva de atributo: Terniario para ver si es menor a 80 aplico green sino transparent -->

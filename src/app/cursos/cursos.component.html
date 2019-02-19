@@ -1,3 +1,19 @@
 <p>
-  cursos works!
+  cursos works !
 </p>
+
+<!-- si existe nombre, lo muestro -->
+<h3 *ngIf="nombre">Bienvenido {{nombre}}</h3>
+
+<div class="">
+    <button (click)="redirigir()">Llevame a zapatillas</button>
+</div>
+
+<p>Cargando o ocultando el componente videojuego</p>
+
+<!-- Mostrando o ocultando botones para mostrar componente videojuegos -->
+    <button (click)="ocultarVideojuegos(false)" *ngIf="mostrar_videojuegos">Ocultar Videojuego</button>
+    <button (click)="ocultarVideojuegos(true)" *ngIf="!mostrar_videojuegos">Mostrar</button>
+
+<!-- creamos un IF para mostrar o ocultar el componente video juego -->
+    <videojuego *ngIf="mostrar_videojuegos"></videojuego>

@@ -18,9 +18,8 @@ export class AppComponent {
 
   public title = 'aprendiendo-angular';
   public descripcion: string;
-  // probando el ondestroy
-  public mostrar_videojuegos: boolean = true;
-  // atributo config que va a contener un objeto
+
+  // atributo config que va a contener un objeto models "Configuracion"
   public config;
 
   constructor(){
@@ -29,7 +28,5 @@ export class AppComponent {
     this.descripcion = Configuracion.descripcion;
   }
 
-  ocultarVideojuegos(value){
-    this.mostrar_videojuegos = value;
-  }
+
 }

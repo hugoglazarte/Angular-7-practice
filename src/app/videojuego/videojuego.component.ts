@@ -17,6 +17,7 @@ import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 export class VideojuegoComponent implements OnInit, DoCheck, OnDestroy{
   // podemos definir propiedades que se pueden transferir a la vista
   public titulo: string;
+  public mi_titulo: string;
   public listado: string;
 
   constructor(){

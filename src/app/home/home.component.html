@@ -1,0 +1,29 @@
+<p>
+  home works!
+</p>
+
+<h2>Pagina principal</h2>
+
+<!-- FORMA INICIAL DEL IF Y ELSE -->
+
+<!-- 
+<div *ngIf="identificado; else noIdentificado">
+  <h3>Estas identificado en la app</h3>
+  <button (click)="unSetIdentificado()">BorrarIdentificacion</button>
+</div>
+-->
+
+<!-- SEGUNDA FORMA CON IF THEN Y ELSE, SI SE CUMPLE LA CONDICION THEN EJECUTA "SiIdentificado" -->
+
+<div *ngIf="identificado; then siIdentificado else noIdentificado">
+</div>
+
+<ng-template #siIdentificado>
+  <h3>Estas identificado en la app</h3>
+  <button (click)="unSetIdentificado()">BorrarIdentificacion</button>
+</ng-template>
+
+<ng-template #noIdentificado>
+  <p>No estas identificado, pulsa este boton para identificarte</p>
+  <button (click)="setIdentificado()">Identificarse</button>
+</ng-template>

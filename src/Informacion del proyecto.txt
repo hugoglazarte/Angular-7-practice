@@ -61,12 +61,36 @@ ngIf: Directiva estructural con condicional
   ejemplo:
     *ngIf="mostrar_videojuegos" = estructura de control condicional
 
+  ----------------------------------------------------------------
+  ---- Para generar un else se usa una directiva nueva: ngTemplate
+  ----  con esta directiva creamos una accion else a realizar
+  ----------------------------------------------------------------
+
+  <div *ngIf="identificado; else nombreFuncionElse">
+    <h3>Estas identificado en la app</h3>
+  </div>
+
+  <ng-template #nombreFuncionElse>
+    <p>No estas identificado, pulsa este boton para identificarte</p>
+    <button (click)="setIdentificado()">Identificarse</button>
+  </ng-template>
+
+
+
 ngFor: Directiva for para recorrer
 
 ngSwitch: Directiva condicional
 
+Class: Asignarle una clase a un elemento cuando se cumpla una condicion
+
+ngClass: puedo asignar varias clases al mismo tiempo
+
+routerLink: Directiva que se usa para generar el menu con rutas
+
+
 TWO WAY DATA BINDING:
 ------------------
+
 Permite modificar datos o atributos del componente y que se vean reflejados
 inmediatamente.
 
@@ -76,3 +100,78 @@ directiva [(ngModel)] para modificar mediante formularios, para ESO ES IMPORTANT
 CARGAR EL MODULO DE FORMULARIOS DE ANGULAR EN EL APP.MODULE
 
 import { FormsModule } from '@angular/forms';
+
+
+EVENTOS:
+--------------
+
+click: ejecuta en click
+blur: cuando salimos del input
+keyup: cuando tocamos una tecla
+
+
+
+RUTAS EN ANGULAR:
+----------
+
+* En Index.html hay que tener el <base href="/">
+* Crear el app.routing.ts
+* Importar modulos de routing de Angular
+* Cargamos las rutas
+* las importamos desde app.module.ts
+* y con las etiquetas <router-outlet></router-outlet> mostramos el contenido pedido en el routing para cada ruta
+
+
+CREANDO MENU:
+----------
+
+Usamos la directiva routerLink
+
+<a [routerLink]="['/']">Home</a>
+[routerLinkActive]="['active']" Añade un estilo a la clase activa
+
+
+PARAMETROS POR URL:
+----------
+* primero se modifican en el routing la ruta que recibe parametros
+  { path: 'cursos/:nombre', component: CursosComponent },
+
+* luego necesitamos importar componentes dentro del componente que recibe parametros
+  import { Router, ActivatedRoute, Params } from '@angular/router';
+
+* Importamos esas props en el constructor
+      constructor(
+        private _route: ActivatedRoute,
+        private _router: Router
+      ) { }
+
+* Para agarrar los valores que le paso puedo usar
+
+    ngOnInit() {
+      this._route.params.subscribe((params: Params) => {
+        console.log();
+      })
+    }
+
+
+REDIRECCIONES:
+----------
+
+Ejemplo de funcion que redirige
+
+redirigir(){
+  this._router.navigate(['/zapatillas']);
+}
+
+
+SERVICIOS:
+----------
+Clases que separan la logica de la app
+
+* creamos la carpeta "Services"
+* creamos el archivo zapatilla.services.ts
+* creamos los metodos que van a hacer las peticiones
+
+* lo importamos en el componente Zapatilla
+* y lo inyectamos como un provider de servicio en @component
+* lo cargamos al constructor
