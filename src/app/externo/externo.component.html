@@ -1,0 +1,57 @@
+<p>
+  externo works!
+</p>
+
+<p>{{ fecha | date: 'fullDate' | uppercase  }}</p>
+<p>{{ fecha | date: 'dd/MM/yy' }}</p>
+
+<p>{{ 4 | calculadora: 2 }}</p>
+
+<hr>
+
+<h2>Crear Usuario</h2>
+
+<form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+
+  <p>
+    <label for="name">Nombre</label>
+    <input type="text" name="name" value="" #name="ngModel" [(ngModel)]="new_user.name" required>
+    <span *ngIf="name.touched && !name.valid">
+      el nombre no es valido
+    </span>
+  </p>
+
+  <p>
+    <label for="job">Trabajo</label>
+    <input type="text" name="job" value="" #job="ngModel" [(ngModel)]="new_user.job" required/>
+    <span *ngIf="job.touched && !job.valid">
+      el trabajo no es valido
+    </span>
+  </p>
+
+  <input type="submit" value="Guardar Usuario" [disabled]="!newUser.form.valid">
+
+</form>
+<!-- Div con la respuesta al post -->
+<div *ngIf="usuario_guardado">
+  <p>El usuario se cargo exitosamente</p>
+  <h3>{{usuario_guardado.name}}</h3>
+  <h3>{{usuario_guardado.job}}</h3>
+</div>
+
+<hr>
+
+<input type="text" [(ngModel)]="userId" (keyup.enter)="cargaUsuario()">
+
+<!-- EFECTO DE CARGA -->
+<div *ngIf="!user">
+  cargando...
+</div>
+
+<!-- Si la propiedad user tiene algo lo muestro -->
+<div *ngIf="user">
+
+  <img src="{{ user.avatar }}" width="200px">
+  <h2>{{ user.first_name + ' ' + user.last_name }}</h2>
+
+</div>

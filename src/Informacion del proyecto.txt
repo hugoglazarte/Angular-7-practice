@@ -175,3 +175,92 @@ Clases que separan la logica de la app
 * lo importamos en el componente Zapatilla
 * y lo inyectamos como un provider de servicio en @component
 * lo cargamos al constructor
+
+
+SERVICIOS PARA PETICIONES:
+-----------
+
+* creamo el modulo externo
+* lo cargamos al component y al routing
+* creamos el servicio
+* importamos el modulo HttpClientModule en el app module
+    import { HttpClientModule } from '@angular/common/http';
+* lo cargamos a los imports dentro de app.module
+* una vez creado el servicio creamos los metodos de conexion
+(api rest publica: https://reqres.in/)
+
+* luego se carga este servicio en el componente que lo va a usar, con import
+* lo cargamos como provider a ese componente
+* y lo inyectamos (el servicio) en el constructor
+* a traves de metodos del servicio y subscribe recibimos el resultado
+
+* de esta forma puedo usar en la vista la informacion recibida
+
+----- Metodos post
+
+* creamos addUser en servicios peticiones
+    // se envia un objeto json string
+    let params = JSON.stringify(user);
+
+    // indicamos las cabeceras
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    // armamos la conexion: Direccion , objeto a guardar
+    return this._http.post(this.url + 'api/users', params, {headers: headers});
+
+* usamos el servicio en el componente:
+
+    onSubmit(form){
+      this._peticionesServices.addUser(this.new_user).subscribe(
+        response => {
+          console.log(response);
+          this.usuario_guardado = response;
+          form.reset();
+        },
+        error => {
+          console.log(<any>error);
+        }
+      )
+    }
+
+Efecto de carga
+-----------
+
+
+PIPES:
+-------------
+filtro o pequeñas tareas o funciones. Ej: pipes para convertir texto de min a mayuscula.
+
+Pipes de fecha: {{ fecha | date: 'fullDate' }} con el | indicamos que viene un filtro | dd/MM/yy
+
+Para crearlo: Creamos el pipe y lo cargamos al app.module
+
+
+FORMULARIO:
+------------
+* creamos el componente
+* lo cargamos al component
+* creamos la ruta
+* creamos el modelo ( clase de objeto ) que vamos a usar en el formulario
+* creamos el formu en html
+* le asignamos un nombre con prefijo # Ej: #FormContacto="ngForm"
+* le asignamos un metodo con (ngSubmit)="onSubmit()"
+* le asigno un nombre a cada input : #nombre="ngModel"
+* le genero el two way data binding para modificar el objeto en el componente:  [(ngModel)]="usario.nombre"
+
+Validando:
+
+* se hace a traves de la val de html5
+* agregamos: required /
+* mediante un ngIF puedo tirar los mensajes
+    <span *ngIf="!nombre.valid">
+      El nombre es obligatorio
+    </span>
+
+    ** otro: si el campo fue tocado y no fue cargado, muestro el mensaje
+      <span *ngIf="nombre.touched && !nombre.valid">
+
+* ademas se pueden agregar pattern de validaciones
+* chequeo que el formulario sea valido antes de enviar
+  [disabled]="!formContacto.form.valid"
+* vaciando el formu

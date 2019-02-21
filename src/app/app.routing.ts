@@ -9,6 +9,9 @@ import { CursosComponent }  from './cursos/cursos.component';
 import { HomeComponent } from './home/home.component';
 // componentes de prueba
 import { CompTest01Component } from './comp-test01/comp-test01.component';
+// componente de servicio externo
+import { ExternoComponent } from './externo/externo.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 // Array de rutas
 const appRoutes: Routes = [
@@ -21,6 +24,8 @@ const appRoutes: Routes = [
   { path: 'cursos/:nombre/:apellidos', component: CursosComponent },
   // fin parametros por ruta
   { path: 'comptest1', component: CompTest01Component },
+  { path: 'externo', component: ExternoComponent },
+  { path: 'contacto', component: ContactoComponent },
   { path: '**', component: HomeComponent }
 ];
 
